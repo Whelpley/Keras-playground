@@ -18,7 +18,9 @@ model.add(Dense(1, init='uniform', activation='sigmoid'))
 # Compile model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 # Fit the model
-model.fit(X, Y, nb_epoch=150, batch_size=10)
-# evaluate the model
-scores = model.evaluate(X, Y)
-print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+model.fit(X, Y, nb_epoch=150, batch_size=10,  verbose=2)
+# calculate predictions
+predictions = model.predict(X)
+# round predictions
+rounded = [round(x) for x in predictions]
+print(rounded)
